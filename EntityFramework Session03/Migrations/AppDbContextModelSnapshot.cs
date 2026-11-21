@@ -47,6 +47,40 @@ namespace EntityFramework_Session03.Migrations
                     b.HasIndex("ParentCategoryId");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "All programming topics",
+                            Name = "Programming"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Server-side development",
+                            Name = "Backend",
+                            ParentCategoryId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "ASP.NET and .NET frameworks",
+                            Name = "ASP.NET",
+                            ParentCategoryId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "Client-side development",
+                            Name = "Frontend",
+                            ParentCategoryId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Design"
+                        });
                 });
 
             modelBuilder.Entity("Course", b =>
@@ -91,6 +125,76 @@ namespace EntityFramework_Session03.Migrations
                     b.HasIndex("InstructorId");
 
                     b.ToTable("Courses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryId = 3,
+                            Description = "Learn the basics",
+                            InstructorId = 1,
+                            IsPublished = true,
+                            Level = 0,
+                            Price = 499.99m,
+                            PublishedAt = new DateTime(2024, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "ASP.NET Core Fundamentals"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryId = 3,
+                            Description = "Deep dive",
+                            InstructorId = 1,
+                            IsPublished = true,
+                            Level = 2,
+                            Price = 799.99m,
+                            PublishedAt = new DateTime(2024, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "Advanced EF Core"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryId = 2,
+                            InstructorId = 2,
+                            IsPublished = true,
+                            Level = 0,
+                            Price = 299.00m,
+                            PublishedAt = new DateTime(2024, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "C# for Beginners"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CategoryId = 4,
+                            Description = "Build UIs",
+                            InstructorId = 3,
+                            IsPublished = true,
+                            Level = 1,
+                            Price = 599.00m,
+                            PublishedAt = new DateTime(2024, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "React from Scratch"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CategoryId = 2,
+                            Description = "Coming soon",
+                            InstructorId = 2,
+                            IsPublished = false,
+                            Level = 1,
+                            Price = 450.00m,
+                            Title = "REST API Design"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CategoryId = 5,
+                            InstructorId = 3,
+                            IsPublished = false,
+                            Level = 0,
+                            Price = 350.00m,
+                            Title = "UI/UX Basics"
+                        });
                 });
 
             modelBuilder.Entity("Enrollment", b =>
@@ -148,6 +252,31 @@ namespace EntityFramework_Session03.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Instructors");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Bio = "Senior .NET developer",
+                            Email = "mokhtar.ismail@learn.com",
+                            FullName = "Mokhtar Ismail",
+                            JoinedAt = new DateTime(2023, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "nour.rashed@learn.com",
+                            FullName = "Nour Rashed",
+                            JoinedAt = new DateTime(2023, 6, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Bio = "Frontend specialist",
+                            Email = "omar.khaled@learn.com",
+                            FullName = "Omar Khaled",
+                            JoinedAt = new DateTime(2024, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("Student", b =>
